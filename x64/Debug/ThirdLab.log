@@ -1,0 +1,6 @@
+﻿  lib.cpp
+D:\MEPHI\KG\ThirdLab\ThirdLab\lib.cpp(28,9): warning C4101: currentY1: неиспользованная локальная переменная
+D:\MEPHI\KG\ThirdLab\ThirdLab\lib.cpp(27,9): warning C4101: currentX1: неиспользованная локальная переменная
+D:\MEPHI\KG\ThirdLab\ThirdLab\lib.cpp(138,11): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+D:\MEPHI\KG\ThirdLab\ThirdLab\lib.cpp(152,11): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+  ThirdLab.vcxproj -> D:\MEPHI\KG\ThirdLab\x64\Debug\ThirdLab.exe
