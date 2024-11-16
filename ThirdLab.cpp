@@ -17,75 +17,99 @@ void Lines() {
 
    fillBackground(lines, WHITE);
 
-   drawLine(10, 100, 200, 50, 1, lines, BLACK);
+   drawLine(10, 100, 200, 50, lines, BLACK);
 
-   drawLine(100, 100, 200, 200, 1, lines, BLACK);
+   drawLine(100, 100, 200, 200, lines, BLACK);
 
-   drawLine(200, 200, 100, 100, 1, lines, BLACK);
+   drawLine(200, 200, 100, 100, lines, BLACK);
 
-   drawLine(100, 100, 10, 200, 1, lines, BLACK);
+   drawLine(100, 100, 10, 200, lines, BLACK);
 
-   drawLine(10, 200, 10, 100, 1, lines, BLACK);
+   drawLine(10, 200, 10, 100, lines, BLACK);
 
-   drawLine(200, 50, 300, 50, 1, lines, BLACK);
+   drawLine(200, 50, 300, 50, lines, BLACK);
 
-   drawLine(350, 100, 200, 150, 1, lines, GREEN);
+   vector<MyPoint> points1 = drawLine(350, 100, 200, 150, lines, GREEN);
 
-   drawLine(200, 150, 350, 100, 1, lines, GREEN);
+   vector<MyPoint> points2 = drawLine(200, 150, 350, 100, lines, GREEN);
+
+   bool isEqual = true;
+   for (int i = 0; i < points1.size(); ++i) {
+       if (points1.at(i).x != points2.at(points1.size() - i - 1).x || points1.at(i).y != points2.at(points1.size() - i - 1).y) {
+           isEqual = false;
+       }
+   }
+
+   cout << isEqual << endl;
 
    saveImage(&lines, "lines.jpg");
 }
 
 void DefaultPolygons() {
-    Mat polygonsDraw = Mat::zeros({ 600, 600 }, CV_8UC3);
+    Mat polygonsDraw = Mat::zeros({ 1000, 1000 }, CV_8UC3);
 
     fillBackground(polygonsDraw, WHITE);
 
-    vector<MyPoint> square = {
-        {50, 50},
-        {150, 50},
-        {150, 150},
-        {50, 150},
-        {50, 50},
-    };
-
-    vector<MyPoint> triangle = {
-        {200, 50},
-        {150, 150},
-        {250, 150},
-        {200, 50},
-    };
-
-    vector<MyPoint> hexagon = {
-        {300, 100},
-        {350, 125}, 
-        {350, 175},
-        {300, 200}, 
-        {250, 175},  
-        {250, 125},
-        {300, 100}, 
-    };
-
     vector<MyPoint> star = {
-        {400, 100},  
-        {450, 200},  
-        {550, 200},  
-        {475, 275},  
-        {500, 400},  
-        {400, 325},  
-        {300, 400},  
-        {325, 275},  
-        {250, 200},  
-        {350, 200},   
-        {400, 100},
+        {200, 600},
+        {250, 500},
+        {300, 600},
+        {150, 550},
+        {350, 550},
+        {200, 600},
     };
 
-    drawPolygon(square, polygonsDraw, BLACK, RED, "even");
+    vector<MyPoint> star2 = {
+        {200, 700},
+        {250, 600},
+        {300, 700},
+        {150, 650},
+        {350, 650},
+        {200, 700},
+    };
 
-    drawPolygon(triangle, polygonsDraw, BLACK, BLUE, "even");
-    drawPolygon(hexagon, polygonsDraw, BLACK, YELLOW, "non");
 
-    drawPolygon(star, polygonsDraw, BLACK, YELLOW, "non");
+    vector<MyPoint> fig1 = {
+     {200, 200},
+     {300, 300},
+     {200, 400},
+     {400, 400},
+     {500, 300},
+     {400, 200},
+     {300, 100},
+     {250, 250},
+     {350, 350},
+     {450, 250},
+     {350, 150},
+     {250, 150},
+     {200, 200}
+    };
+
+    vector<MyPoint> fig2 = {
+        {600, 200},
+        {700, 300},
+        {600, 400},
+        {800, 400},
+        {900, 300},
+        {800, 200},
+        {700, 100},
+        {650, 250},
+        {750, 350},
+        {850, 250},
+        {750, 150},
+        {650, 150},
+        {600, 200} 
+    };
+
+
+
+    drawPolygon(star, polygonsDraw, BLACK, YELLOW, "even"); 
+
+    drawPolygon(star2, polygonsDraw, BLACK, RED, "non");
+
+    drawPolygon(fig1, polygonsDraw, BLACK, RED, "non");
+
+    drawPolygon(fig2, polygonsDraw, BLACK, YELLOW, "even");
 
     saveImage(&polygonsDraw, "polygons.jpg");
 }
@@ -243,13 +267,15 @@ void ThickLines() {
 
     fillBackground(thickLines, WHITE);
 
-    drawLine(40, 200, 200, 40, 50, thickLines, BLACK);
+    drawThickLine(40, 200, 200, 40, 50, thickLines, BLACK);
 
-    drawDashLine(60, 300, 200, 140, 40, thickLines, BLACK);
+    drawDashLine(300, 200, 300, 300, 6, 2, 20, thickLines, RED);
 
-    drawLine(300, 200, 300, 300, 20, thickLines, RED);
+    drawDashLine(250, 350, 350, 350, 3, 7, 20, thickLines, RED);
 
-    drawLine(250, 350, 350, 350, 20, thickLines, RED);
+    drawDashLine(200, 350, 150, 250, 5, 5, 50, thickLines, RED);
+
+    drawDashLine(40, 350, 150, 150, 5, 5, 1, thickLines, RED);
 
     saveImage(&thickLines, "thickLines.jpg");
 }
